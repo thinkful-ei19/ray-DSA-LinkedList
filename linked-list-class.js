@@ -141,12 +141,16 @@ function main() {
   SSL.insertLast('Husker');
   SSL.insertLast('Starbuck');
   SSL.insertLast('Tauhida');
-  SSL.remove('squirrel');
+//   SSL.insertBefore('Athena', 'Boomer');
+//   SSL.insertAfter('Hotdog', 'Helo');
+  SSL.insertAt('Kat', 3);
+  SSL.remove('Tauhida');
+//   SSL.remove('squirrel');
 //   SSL.insertBefore('Ray', 'Apollo');
 //   SSL.insertAfter('Ray', 'Tauhida');
-  SSL.insertAt('Ray', 0);
-  console.log(SSL.find('Ray'));
-  console.log(SSL.find('Apollo'));
+//   SSL.insertAt('Ray', 0);
+  console.log(SSL.find('Helo'));
+  console.log(SSL.find('Starbuck'));
 //   console.log(SSL.find('Boomer'));
 //   console.log(SSL);
 }
