@@ -28,6 +28,19 @@ class LinkedList {
     }
   }
 
+  insertBefore(item, key) {
+    let currNode = this.head;
+    let previousNode = this.head;
+    while((currNode.next !== null) && (currNode.value !== key)) {
+      previousNode = currNode;
+      currNode = currNode.next;
+    }
+    if(currNode === null) {
+      throw new Error('Item to insert before not found');
+    }
+    previousNode.next = new _Node(item, currNode);
+  }
+
   find(item) {
     //start at the head
     let currNode = this.head;
@@ -88,8 +101,12 @@ function main() {
   SSL.insertLast('Helo');
   SSL.insertLast('Husker');
   SSL.insertLast('Starbuck');
-  console.log(SSL.find('Husker'));
-  console.log(SSL);
+  SSL.insertLast('Tauhida');
+  SSL.remove('squirrel');
+  SSL.insertBefore('Ray', 'Tauhida');
+  console.log(SSL.find('Starbuck'));
+  console.log(SSL.find('Ray'));
+//   console.log(SSL);
 }
 
 main();
