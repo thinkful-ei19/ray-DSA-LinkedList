@@ -131,6 +131,40 @@ class LinkedList {
 }
 
 
+function display(list) {
+  let currNode = list.head;
+  let displayList = currNode.value.toString();
+  while(currNode.next !== null) {
+    displayList += ', ' + currNode.next.value.toString();
+    currNode = currNode.next;
+  }
+  if(currNode === null) {
+    throw new Error('List is empty');
+  }
+  return displayList;
+}
+
+
+function size(list) {
+
+}
+
+
+function isEmpty(list) {
+  
+}
+
+
+function findPrevious() {
+
+}
+
+
+function findLast() {
+
+}
+
+
 //================================================================
 
 function main() {
@@ -149,10 +183,12 @@ function main() {
 //   SSL.insertBefore('Ray', 'Apollo');
 //   SSL.insertAfter('Ray', 'Tauhida');
 //   SSL.insertAt('Ray', 0);
-  console.log(SSL.find('Helo'));
-  console.log(SSL.find('Starbuck'));
+//   console.log(SSL.find('Helo'));
+//   console.log(SSL.find('Starbuck'));
 //   console.log(SSL.find('Boomer'));
 //   console.log(SSL);
+
+  console.log(display(SSL));
 }
 
 main();
