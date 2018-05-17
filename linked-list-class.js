@@ -146,39 +146,69 @@ function display(list) {
 
 
 function size(list) {
+  let currNode = list.head;
 
+  if(currNode === null) {
+    throw new Error('List is empty');
+  }
+  let size = 0;
+  while(currNode !== null) {
+    currNode = currNode.next;
+    size++;
+  }
+  return size;
 }
 
 
 function isEmpty(list) {
-  
+  if(list.head === null) {
+    return 'Empty list';
+  } else {
+      return 'List not empty';
+  }
 }
 
 
-function findPrevious() {
-
+function findPrevious(list, before) {
+  if(list.head.value === before) {
+    throw new Error(`Nothing before ${before}`);
+  }
+  let currNode = list.head;
+  while((currNode.next !== null) && (currNode.next.value !== before)) {
+    currNode = currNode.next;
+  }
+  return currNode;
 }
 
 
-function findLast() {
-
+function findLast(list) {
+  if(list.head === null) {
+    throw new Error('List is empty');
+  }
+  let currNode = list.head;
+  while(currNode.next !== null) {
+    currNode = currNode.next;
+  }
+  if(currNode.next === null) {
+    return currNode;
+  }
 }
 
 
 //================================================================
 
 function main() {
-  let SSL = new LinkedList();
-  SSL.insertFirst('Apollo');
-  SSL.insertLast('Boomer');
-  SSL.insertLast('Helo');
-  SSL.insertLast('Husker');
-  SSL.insertLast('Starbuck');
-  SSL.insertLast('Tauhida');
+  let SLL = new LinkedList();
+  SLL.insertFirst('Apollo');
+  SLL.insertLast('Boomer');
+  SLL.insertLast('Helo');
+  SLL.insertLast('Husker');
+  SLL.insertLast('Starbuck');
+  SLL.insertLast('Tauhida');
 //   SSL.insertBefore('Athena', 'Boomer');
 //   SSL.insertAfter('Hotdog', 'Helo');
-  SSL.insertAt('Kat', 3);
-  SSL.remove('Tauhida');
+//   SSL.insertAt('Kat', 3);
+//   SSL.remove('Tauhida');
 //   SSL.remove('squirrel');
 //   SSL.insertBefore('Ray', 'Apollo');
 //   SSL.insertAfter('Ray', 'Tauhida');
@@ -188,7 +218,11 @@ function main() {
 //   console.log(SSL.find('Boomer'));
 //   console.log(SSL);
 
-  console.log(display(SSL));
+//   console.log(display(SLL));
+//   console.log(size(SLL));
+//   console.log(isEmpty(SLL));
+//   console.log(findPrevious(SLL, 'Husker'));
+  console.log(findLast(SLL));
 }
 
 main();
