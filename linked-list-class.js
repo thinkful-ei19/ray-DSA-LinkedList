@@ -28,10 +28,15 @@ class LinkedList {
     }
   }
 
-  insertBefore(item, key) {
+  insertBefore(item, before) {
+    if(this.head.value === before) {
+      this.insertFirst(item);
+      return;
+    }
     let currNode = this.head;
     let previousNode = this.head;
-    while((currNode.next !== null) && (currNode.value !== key)) {
+
+    while((currNode.next !== null) && (currNode.value !== before)) {
       previousNode = currNode;
       currNode = currNode.next;
     }
@@ -39,6 +44,20 @@ class LinkedList {
       throw new Error('Item to insert before not found');
     }
     previousNode.next = new _Node(item, currNode);
+  }
+  
+  insertAfter(item, after) {
+    let currNode = this.head;
+
+    while((currNode !== null) && (currNode.value !== after)) {
+      currNode = currNode.next;
+    }
+    if(currNode === null) {
+      throw new Error('Item to insert after not found');
+    }
+    if(currNode !== null) {
+      currNode.next = new _Node(item, currNode.next);
+    }
   }
 
   find(item) {
@@ -103,9 +122,11 @@ function main() {
   SSL.insertLast('Starbuck');
   SSL.insertLast('Tauhida');
   SSL.remove('squirrel');
-  SSL.insertBefore('Ray', 'Tauhida');
-  console.log(SSL.find('Starbuck'));
+//   SSL.insertBefore('Ray', 'Apollo');
+  SSL.insertAfter('Ray', 'Tauhida');
   console.log(SSL.find('Ray'));
+  console.log(SSL.find('Tauhida'));
+//   console.log(SSL.find('Boomer'));
 //   console.log(SSL);
 }
 
