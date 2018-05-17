@@ -60,6 +60,26 @@ class LinkedList {
     }
   }
 
+  insertAt(item, position) {
+    if(position === 0) {
+      this.insertFirst(item);
+      return;
+    }
+    let currNode = this.head;
+    let previousNode = this.head;
+    let count = 0;
+
+    while((currNode !== null) && (count !== position)) {
+      previousNode = currNode;
+      currNode = currNode.next;
+      count++
+    }
+    if(currNode === null) {
+      throw new Error('Cannot insert at position');
+    }
+    previousNode.next = new _Node(item, currNode);
+  }
+
   find(item) {
     //start at the head
     let currNode = this.head;
@@ -123,9 +143,10 @@ function main() {
   SSL.insertLast('Tauhida');
   SSL.remove('squirrel');
 //   SSL.insertBefore('Ray', 'Apollo');
-  SSL.insertAfter('Ray', 'Tauhida');
+//   SSL.insertAfter('Ray', 'Tauhida');
+  SSL.insertAt('Ray', 0);
   console.log(SSL.find('Ray'));
-  console.log(SSL.find('Tauhida'));
+  console.log(SSL.find('Apollo'));
 //   console.log(SSL.find('Boomer'));
 //   console.log(SSL);
 }
