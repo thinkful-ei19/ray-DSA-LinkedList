@@ -1,5 +1,4 @@
 'use strict';
-
 class _Node {
   constructor(value, next) {
     this.value = value;
@@ -13,7 +12,7 @@ class LinkedList {
   }
 
   insertFirst(item) {
-    this.head = new_Node(item, this.head);
+    this.head = new _Node(item, this.head);
   }
 
   insertLast(item) {
@@ -78,3 +77,19 @@ class LinkedList {
     previousNode.next = currNode.next;
   }
 }
+
+
+//================================================================
+
+function main() {
+  let SSL = new LinkedList();
+  SSL.insertFirst('Apollo');
+  SSL.insertLast('Boomer');
+  SSL.insertLast('Helo');
+  SSL.insertLast('Husker');
+  SSL.insertLast('Starbuck');
+  console.log(SSL.find('Husker'));
+  console.log(SSL);
+}
+
+main();
