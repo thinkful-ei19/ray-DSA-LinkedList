@@ -196,7 +196,65 @@ function findLast(list) {
 
 
 //================================================================
+// *MYSTERY PROGRAM*
+function WhatDoesThisProgramDo(lst){
+    let current = lst.head;
+    while(current !== null){
+        let newNode = current;
+        while (newNode.next !== null) {
+            if (newNode.next.value === current.value) {
+                newNode.next = newNode.next.next;
+            }
+            else{
+                newNode = newNode.next;
+            }
+        }
+        current = current.next;
+    }
+}
 
+// This function is looping through the input list twoce to check if there are any matching list items. If there is a matching list item, it will
+// replace the value with the next value in the list.
+// 0(n^2) Polynomial - This algorithm uses a nested loop
+
+
+//================================================================
+// *REVERSE LIST*
+function reverseList(list) {
+  if(!list.head) {
+    return;
+  }
+  let currNode = list.head;
+  let previousNode = null;
+  let nextNode = null;
+
+  while(currNode !== null) {
+    nextNode = currNode.next;
+    currNode.next = previousNode;
+    previousNode = currNode;
+    currNode = nextNode;
+    // console.log(currNode, "equals");
+  }
+  list.head = previousNode;
+  return list;
+  console.log(list);
+}
+
+//================================================================
+// *THIRD FROM THE END*
+function thirdFromEnd(list) {
+  if(!list.head) {
+    return;
+  }
+  let currNode = list.head;
+
+  while(currNode.next.next.next !== null) {
+    currNode = currNode.next;
+  }
+  return currNode;
+}
+
+//================================================================
 function main() {
   let SLL = new LinkedList();
   SLL.insertFirst('Apollo');
@@ -217,12 +275,15 @@ function main() {
 //   console.log(SSL.find('Starbuck'));
 //   console.log(SSL.find('Boomer'));
 //   console.log(SSL);
-
 //   console.log(display(SLL));
 //   console.log(size(SLL));
 //   console.log(isEmpty(SLL));
 //   console.log(findPrevious(SLL, 'Husker'));
-  console.log(findLast(SLL));
+//   console.log(findLast(SLL));
+//   console.log(reverseList(SLL));
+  console.log(thirdFromEnd(SLL));
+
 }
 
 main();
+
