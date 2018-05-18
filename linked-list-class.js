@@ -255,6 +255,35 @@ function thirdFromEnd(list) {
 }
 
 //================================================================
+// *MIDDLE OF A LIST*
+function middleOfList(list) {
+  let currNode = list.head;
+  let previousNode = list.head;
+  let middle = size(list) / 2;
+  middle = Math.round(middle);
+  let count = 0;
+
+  while(count !== middle) {
+    if(!currNode.next) {
+      return;
+    }
+    previousNode = currNode;
+    currNode = currNode.next;
+    count++;
+  }
+  if(currNode === null) {
+    throw new Error('List is empty');
+  }
+  return previousNode;
+}
+
+//================================================================
+// *CYCLE IN A LIST*
+function cycleInList() {
+    
+}
+
+//================================================================
 function main() {
   let SLL = new LinkedList();
   SLL.insertFirst('Apollo');
@@ -263,6 +292,7 @@ function main() {
   SLL.insertLast('Husker');
   SLL.insertLast('Starbuck');
   SLL.insertLast('Tauhida');
+  SLL.insertLast('Ray');
 //   SSL.insertBefore('Athena', 'Boomer');
 //   SSL.insertAfter('Hotdog', 'Helo');
 //   SSL.insertAt('Kat', 3);
@@ -281,8 +311,8 @@ function main() {
 //   console.log(findPrevious(SLL, 'Husker'));
 //   console.log(findLast(SLL));
 //   console.log(reverseList(SLL));
-  console.log(thirdFromEnd(SLL));
-
+//   console.log(thirdFromEnd(SLL));
+  console.log(middleOfList(SLL));
 }
 
 main();
